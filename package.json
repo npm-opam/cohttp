@@ -1,0 +1,73 @@
+{
+    "name": "cohttp-actual",
+    "exportedEnvVars": {
+        "CAML_LD_LIBRARY_PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib/stublibs"
+        },
+        "cohttp_installed": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "true"
+        },
+        "FINDLIB": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/lib"
+        },
+        "version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "0.21.0"
+        },
+        "cohttp_version": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "0.21.0"
+        },
+        "PATH": {
+            "global": true,
+            "resolveAsRelativePath": true,
+            "globalCollisionBehavior": "joinPath",
+            "val": "./_build/ocamlfind/bin"
+        },
+        "cohttp_enable": {
+            "global": true,
+            "globalCollisionBehavior": "clobber",
+            "val": "enable"
+        }
+    },
+    "version": "0.21.0",
+    "dependencies": {
+        "@opam-alpha/lwt": "*",
+        "@opam-alpha/re": "*",
+        "@opam-alpha/sexplib": "*",
+        "@opam-alpha/ounit": "*",
+        "@opam-alpha/alcotest": "*",
+        "@opam-alpha/fieldslib": "*",
+        "@opam-alpha/ocamlfind": "*",
+        "@opam-alpha/js_of_ocaml": "*",
+        "@opam-alpha/ppx_fields_conv": "*",
+        "@opam-alpha/base64": ">= 2.0.0",
+        "dependency-env": "https://github.com/npm-ml/dependency-env.git",
+        "substs": "https://github.com/yunxing/substs.git",
+        "@opam-alpha/stringext": "*",
+        "@opam-alpha/magic-mime": "*",
+        "@opam-alpha/ppx_sexp_conv": "*",
+        "@opam-alpha/uri": ">= 1.9.0",
+        "@opam-alpha/conduit": ">= 0.11.0",
+        "@opam-alpha/cmdliner": ">= 0.9.4",
+        "nopam": "https://github.com/yunxing/nopam.git",
+        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git",
+        "@opam-alpha/async": "*"
+    },
+    "scripts": {
+        "postinstall": "eval $(dependencyEnv) && nopam && make PREFIX=$opam_prefix && make PREFIX=$opam_prefix install && (opam-installer --prefix=$opam_prefix || true)"
+    },
+    "peerDependencies": {
+        "@opam-alpha/ocaml": ">= 4.01.0"
+    }
+}
